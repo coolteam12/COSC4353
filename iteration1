@@ -1,0 +1,117 @@
+import java.awt.*;
+import javax.swing.*;
+import java.io.*;
+import java.awt.event.*;
+import javax.swing.text.*;
+class editor extends JFrame implements ActionListener {
+
+    JTextArea text;
+    JFrame frame;
+
+    editor()
+    {
+        frame = new JFrame("coolteam12's Editor");
+
+        text = new JTextArea();
+        JMenuBar menubar = new JMenuBar();
+        JMenu file = new JMenu("File");
+
+        JMenuItem fileNew = new JMenuItem("Create new project");
+        JMenuItem fileOpen = new JMenuItem("Open");
+        JMenuItem fileSave = new JMenuItem("Save");
+
+        file.add(fileNew);
+        file.add(fileOpen);
+        file.add(fileSave);
+
+        fileNew.addActionListener(this);
+        fileOpen.addActionListener(this);
+        fileSave.addActionListener(this);
+
+        JMenuItem close = new JMenuItem("Close");
+        close.addActionListener(this);
+
+        menubar.add(file);
+        menubar.add(close);
+
+        frame.setJMenuBar(menubar);
+        frame.add(text);
+        frame.setSize(1000, 700);
+        frame.setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e)
+    {
+        String choice = e.getActionCommand();
+        if (choice.equals("Create new project")) {
+            JFileChooser directory = new JFileChooser("f:");
+            int x = directory.showSaveDialog(null);
+            if (x == JFileChooser.APPROVE_OPTION) {
+                File newDir = new File(directory.getSelectedFile().getAbsolutePath());
+                try {
+                    newDir.mkdirs();
+                    //call save file stuff but I don't know how to access the newly made directory
+                }
+                catch (Exception event) {
+                    JOptionPane.showMessageDialog(frame, event.getMessage());
+                }
+            }
+            else {
+                JOptionPane.showMessageDialog(frame, "New project cancelled..");
+            }
+        }
+        else if (choice.equals("Save")) {
+            JFileChooser directory = new JFileChooser("f:");
+            int x = directory.showSaveDialog(null);
+            if (x == JFileChooser.APPROVE_OPTION) {
+                File newFile = new File(directory.getSelectedFile().getAbsolutePath());
+                try {
+                    FileWriter filewriter = new FileWriter(newFile, false);
+                    BufferedWriter bufferedwriter = new BufferedWriter(filewriter);
+                    bufferedwriter.write(text.getText());
+                    bufferedwriter.flush();
+                    bufferedwriter.close();
+                }
+                catch (Exception event) {
+                    JOptionPane.showMessageDialog(frame, event.getMessage());
+                }
+            }
+            else {
+                JOptionPane.showMessageDialog(frame, "Save cancelled.");
+            }
+        }
+        else if (choice.equals("Open")) {
+            JFileChooser directory = new JFileChooser("f:");
+            int x = directory.showOpenDialog(null);
+            if (x == JFileChooser.APPROVE_OPTION) {
+                File oldFile = new File(directory.getSelectedFile().getAbsolutePath());
+                try {
+                    String y = "";
+                    String z = "";
+                    FileReader filereader = new FileReader(oldFile);
+                    BufferedReader bufferedreader = new BufferedReader(filereader);
+                    z = bufferedreader.readLine();
+                    while ((y = bufferedreader.readLine()) != null) {
+                        z = z + "\n" + y;
+                    }
+                    text.setText(z);
+                }
+                catch (Exception event) {
+                    JOptionPane.showMessageDialog(frame, event.getMessage());
+                }
+            }
+            else
+                JOptionPane.showMessageDialog(frame, "Opening an existing file cancelled.");
+        }
+        else if (choice.equals("Close")) {
+            frame.setVisible(false);
+        }
+    }
+
+    public static void main(String args[])
+    {
+        editor myEditor = new editor();
+    }
+}
+
+
