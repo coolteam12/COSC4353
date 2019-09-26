@@ -1,0 +1,23 @@
+@font-face {
+    src: url('fonts/Hack-Regular.ttf');
+}
+
+.root {
+    -fx-font-size: 12pt;
+    -fx-font-family: 'Hack';
+    -fx-background-color: #272727;
+}
+
+#filesList {
+    -fx-font-size: 10pt;
+}
+
+.context-menu {
+    -fx-font-size: 10pt;
+    -fx-background-color: #272727;
+}
+
+.context-menu .text {
+    -fx-font-family: scientifica;
+    -fx-fill: #ffffff;
+}

@@ -1,0 +1,21 @@
+#codePane .keyword {
+    -fx-fill: #8adeff;
+}
+
+#codePane .operator {
+    -fx-fill: #f07278;
+}
+
+.styled-text-area {
+    -fx-background-color: #1b1b1b;
+}
+
+.text {
+    -fx-font-family: scientifica;
+    -fx-fill: #ffffff;
+    -fx-font-smoothing-type: lcd;
+}
+
+.lineno {
+    -fx-background-color: #1b1b1b;
+}
