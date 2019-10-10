@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
 
+
 import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 import org.reactfx.Subscription;
@@ -58,7 +59,9 @@ public class SplitPaneController {
     private Button btnRun;
     @FXML
     private Button btnWordCount;
-    
+
+    @FXML
+    private Label lblTest;
 
     @FXML
     public void initialize() {
@@ -74,6 +77,7 @@ public class SplitPaneController {
 
         this.fileManager = new FileManager(stage, filesList, this);
 
+        lblTest.setText("Word Count: 0");
 //        filesList.getStylesheets().add(getClass().getResource("stylesheets/files-list.css").toExternalForm());
         codePane.setFocusTraversable(true);
         fileViewer.setFocusTraversable(true);
@@ -124,6 +128,11 @@ public class SplitPaneController {
             codePane.getStylesheets().add(getClass().getResource("/resources/stylesheets/syntax-highlighting.css").toExternalForm());
             codePane.getChildren().add(area);
 
+//            String toCount = area.getText();
+//            System.out.println(toCount);
+//            String[] wordArr = toCount.split(" ");
+//            System.out.println(wordArr.length);
+
             area.setOnKeyPressed(new EventHandler<KeyEvent>() {
                 @Override
                 public void handle(KeyEvent event) {
@@ -139,7 +148,7 @@ public class SplitPaneController {
         return fileManager;
     }
 
-    //When the button "Word Count" is pressed, this funciton is called to do the calculations
+    //When the button "Word Count" is pressed, this function is called to do the calculations
     @FXML
     private void getWordCount(MouseEvent event){
 
@@ -161,7 +170,8 @@ public class SplitPaneController {
                     else if(lineArray[i].charAt(j)=='e' && lineArray[i].charAt(j+1) == 'l' &&lineArray[i].charAt(j+2)=='s' && lineArray[i].charAt(j+3) == 'e'&& !Character.toString(lineArray[i].charAt(j-1)).matches("[a-z?]")&& !Character.toString(lineArray[i].charAt(j+4)).matches("[a-z?]")&& !Character.toString(lineArray[i].charAt(j-1)).matches("[A-Z?]")&& !Character.toString(lineArray[i].charAt(j+4)).matches("[A-Z?]")){elseCount++;}
                 }
             }
-            String message = ("Amount of for: " + forCount + "\nAmount of while: " + whileCount + "\nAmount of if: " + ifCount + "\nAmount of else: " + elseCount);
+            String message = ("Amount of for: " + forCount + " Amount of while: " + whileCount + " Amount of if: " + ifCount + " Amount of else: " + elseCount);
+            lblTest.setText(message);
             //Displayes the word count as a PopupBox
             btnWordCount.setOnAction(e-> PopupBox.display("Word Counter", message));
         }else{
@@ -233,6 +243,8 @@ public class SplitPaneController {
             btnCompile.setOnAction(e-> PopupBox.display("Compiler Message", "File compiled successfully."+area.getCurrentPath()));
         }*/
     }
+
+
 }
 
 

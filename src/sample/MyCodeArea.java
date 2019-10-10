@@ -19,7 +19,7 @@ class MyCodeArea extends CodeArea {
     // TODO: exclude regex from quotations
     private static final String KEYWORD_PATTERN = "\\b(if|else|for|while)\\b";
     private static final String OPERATOR_PATTERN = "(!=|==|!|-|/|\\+|\\||%%|\\|\\||&&|\\*|\\^|&|\\+=|-=|\\*=|/=)";
-
+    private static int WORD_COUNT = 0;
     private static final Pattern PATTERN = Pattern.compile(
             "(?<KEYWORD>" + KEYWORD_PATTERN + ")" + "|(?<OPERATOR>" + OPERATOR_PATTERN + ")"
     );
@@ -29,7 +29,7 @@ class MyCodeArea extends CodeArea {
             "",
             "import java.util.*;",
             "",
-            "public class Foo extends Bar implements Baz {",
+            "public class BoilerPlate{",
             "",
             "    public static void main(String[] args) {",
             "        System.out.println(\"HelloWorld\");",
@@ -64,8 +64,15 @@ class MyCodeArea extends CodeArea {
             while (keyb.hasNextLine())
                 contents.add(keyb.nextLine() + "\n");
 
-            for (String i : contents)
+            for (String i : contents){
                 appendText(i);
+            }
+//            String toCount = this.getText();
+//            String [] arr = toCount.split(" ");
+//            WORD_COUNT = arr.length;
+//            String wc = Integer.toString(WORD_COUNT);
+//            lblTest.setText(wc);
+
         } catch (IOException e) {
             System.out.println("Could not find file at CodeArea");
             e.printStackTrace();
