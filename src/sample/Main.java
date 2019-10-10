@@ -20,12 +20,12 @@ public class Main extends Application {
     // TODO: new file tab
     // TODO: tab support
     // TODO: Save as
+    // TODO: no right clicking on code pane unless its text related
 
     // TODO: opening documents folder lags out, fix it
 
-
     public static final int WIDTH = 1440;
-    public static final int HEIGHT = 900;
+    public static final int HEIGHT = 800;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
