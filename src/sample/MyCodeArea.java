@@ -47,6 +47,8 @@ class MyCodeArea extends CodeArea {
         contents = new ArrayList<String>();
     }
 
+    public String getCurrentPath(){return currentPath;}
+
     void openFile(String path) {
         if (currentPath != null && currentPath.equals(path))
             return;
