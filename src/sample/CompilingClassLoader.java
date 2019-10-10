@@ -49,8 +49,7 @@ public class CompilingClassLoader extends ClassLoader
     }
     // The heart of the ClassLoader -- automatically compile
     // source as necessary when looking for class files
-    public Class loadClass( String name, boolean resolve )
-            throws ClassNotFoundException {
+    public Class loadClass( String name, boolean resolve ) throws ClassNotFoundException {
         // Our goal is to get a Class object
         Class clas = null;
         // First, see if we've already dealt with this one
@@ -70,9 +69,7 @@ public class CompilingClassLoader extends ClassLoader
         // First, see if we want to try compiling. We do if (a) there
         // is source code, and either (b0) there is no object code,
         // or (b1) there is object code, but it's older than the source
-        if (javaFile.exists() &&
-                (!classFile.exists() ||
-                        javaFile.lastModified() > classFile.lastModified())) {
+        if (javaFile.exists() && (!classFile.exists() || javaFile.lastModified() > classFile.lastModified())) {
             try {
                 // Try to compile it. If this doesn't work, then
                 // we must declare failure. (It's not good enough to use

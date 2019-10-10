@@ -145,6 +145,7 @@ public class SplitPaneController {
 
         //As long as the text area is filled, it will run correctly
         if(area!= null){
+
             String text = area.getText();
             String[] lineArray = text.split("\n");
             int forCount = 0, whileCount = 0, ifCount = 0, elseCount = 0;

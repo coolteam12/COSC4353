@@ -73,6 +73,7 @@ class MyCodeArea extends CodeArea {
     }
 
     void saveToFile() {
+
         try {
             Writer fileWriter = new FileWriter(currentPath, false);
             fileWriter.write(getText());
