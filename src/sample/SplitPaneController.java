@@ -8,6 +8,10 @@ import javafx.scene.control.TreeView;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.event.ActionEvent;
+import javafx.scene.text.Text;
+
 
 import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
@@ -41,6 +45,14 @@ public class SplitPaneController {
     private final KeyCombination saveCombination = new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN);
     // TODO: implement this better
     private MyCodeArea area;
+
+    @FXML
+    private Button btnCompile;
+    @FXML
+    private Button btnRun;
+    @FXML
+    private Button btnWordCount;
+    
 
     @FXML
     public void initialize() {
@@ -119,4 +131,19 @@ public class SplitPaneController {
         return fileManager;
     }
 
+    @FXML
+    public void printOutput(ActionEvent actionEvent) {
+        System.out.println("Button has been pressed");
+    }
+    @FXML
+    public void runProgram(ActionEvent actionEvent) {
+        System.out.println("Button has been pressed ans");
+    }
+    @FXML
+    public void compileProgram(ActionEvent actionEvent) {
+        System.out.println("Button has been pressed");
+    }
 }
+
+
+
