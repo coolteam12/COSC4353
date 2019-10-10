@@ -3,13 +3,18 @@ package sample;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TreeView;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
+import javafx.stage.Popup;
+import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
 
@@ -96,6 +101,8 @@ public class SplitPaneController {
                     else if(lineArray[i].charAt(j)=='e' && lineArray[i].charAt(j+1) == 'l' &&lineArray[i].charAt(j+2)=='s' && lineArray[i].charAt(j+3) == 'e'&& !Character.toString(lineArray[i].charAt(j-1)).matches("[a-z?]")&& !Character.toString(lineArray[i].charAt(j+4)).matches("[a-z?]")&& !Character.toString(lineArray[i].charAt(j-1)).matches("[A-Z?]")&& !Character.toString(lineArray[i].charAt(j+4)).matches("[A-Z?]")){elseCount++;}
                 }
             }
+            String message = ("Amount of for: " + forCount + "\nAmount of while: " + whileCount + "\nAmount of if: " + ifCount + "\nAmount of else: " + elseCount);
+            btnWordCount.setOnAction(e-> PopupBox.display("Word Counter", message));
             System.out.println("Amount of for: " + forCount);
             System.out.println("Amount of while: " + whileCount);
             System.out.println("Amount of if: " + ifCount);
