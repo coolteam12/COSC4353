@@ -220,9 +220,7 @@ public class SplitPaneController {
 
         //Call the JavaCompiler Code here
         CompilingClassLoader hello = new CompilingClassLoader();
-        boolean x = hello.createTestClass(className);
-        if(x){lblTest.setText("Compilation Successful");}
-        else{lblTest.setText("Compilation Unsuccessful");}
+        hello.compileClass(className, text);
     }
 
 
