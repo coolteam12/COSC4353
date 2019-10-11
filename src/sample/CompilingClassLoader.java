@@ -2,7 +2,6 @@ package sample;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Serializable;
@@ -10,8 +9,6 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.jar.JarEntry;
-import java.util.jar.JarOutputStream;
 
 import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
@@ -23,15 +20,12 @@ import javax.tools.JavaFileObject;
 import javax.tools.SimpleJavaFileObject;
 import javax.tools.ToolProvider;
 
-
 public class CompilingClassLoader implements Serializable {
     private static final long serialVersionUID = 1L;
     private String classPath = System.getProperty("java.class.path");
-    private boolean compiled;
 
     public void compileClass(final String className, final String classCode) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-
         JavaCompiler javaCompiler = ToolProvider.getSystemJavaCompiler();
         OutputStreamJavaFileManager<JavaFileManager> fileManager =
                 new OutputStreamJavaFileManager<JavaFileManager>(
@@ -42,7 +36,6 @@ public class CompilingClassLoader implements Serializable {
 
         List<String> options = Arrays.asList("-classpath", this.classPath);
         DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
-
         if (!javaCompiler.getTask(null, fileManager, diagnostics, options, null, fileObjects).call()) {
             StringBuilder errorMsg = new StringBuilder();
             for (Diagnostic d : diagnostics.getDiagnostics()) {
@@ -53,8 +46,6 @@ public class CompilingClassLoader implements Serializable {
             throw new IOException(errorMsg.toString());
         }
     }
-
-    public boolean getCompiledStatus(){return compiled;}
 
     private class JavaSourceFromString extends SimpleJavaFileObject {
         final String code;
@@ -98,12 +89,6 @@ public class CompilingClassLoader implements Serializable {
         public JavaFileObject getJavaFileForOutput(final JavaFileManager.Location location,
                                                    final String className, final JavaFileObject.Kind kind, final FileObject sibling) {
             return new OutputStreamSimpleFileObject(new File(className).toURI(), kind, outputStream);
-        }
-    }
-
-    public class SingleClassClassLoader extends ClassLoader {
-        public Class addClass(final String className, final byte[] definition) {
-            return super.defineClass(className, definition, 0, definition.length);
         }
     }
 }

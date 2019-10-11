@@ -188,17 +188,7 @@ public class SplitPaneController {
     }
     @FXML
     public void runProgram(ActionEvent event) {
-        /*
-        Class mainArgType[] = { (new String[0]).getClass() };
-        // Find the standard main method in the class
-        Method main = clas.getMethod( "main", mainArgType );
-        // Create a list containing the arguments -- in this case,
-        // an array of strings
-        Object argsArray[] = { progArgs };
-        // Call the method
-        main.invoke( null, argsArray );
 
-         */
     }
     @FXML
     public void compileProgram(ActionEvent event) throws Exception {
@@ -220,8 +210,10 @@ public class SplitPaneController {
 
         //Call the JavaCompiler Code here
         CompilingClassLoader hello = new CompilingClassLoader();
+        lblTest.setText("Compiled Unsuccessfully");
         hello.compileClass(className, text);
-    }
+        lblTest.setText("Compiled Successfully");
+}
 
 
 }
