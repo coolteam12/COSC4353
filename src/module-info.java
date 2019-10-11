@@ -3,6 +3,7 @@ module sshide {
     requires javafx.controls;
     requires java.desktop;
     requires richtextfx.fat;
+    requires java.compiler;
 
     opens sample;
 }

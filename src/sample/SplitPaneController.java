@@ -23,6 +23,8 @@ import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 import org.reactfx.Subscription;
 
+import javax.tools.ToolProvider;
+import java.io.FileOutputStream;
 import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -160,7 +162,6 @@ public class SplitPaneController {
         if(area!= null){
 
             String text = area.getText();
-            System.out.println(text);
             int forCount = 0, whileCount = 0, ifCount = 0, elseCount = 0;
             Pattern forPattern = Pattern.compile("for");
             Pattern whilePattern = Pattern.compile("while");
@@ -186,7 +187,7 @@ public class SplitPaneController {
         }
     }
     @FXML
-    public void runProgram(MouseEvent event) {
+    public void runProgram(ActionEvent event) {
         /*
         Class mainArgType[] = { (new String[0]).getClass() };
         // Find the standard main method in the class
@@ -200,7 +201,7 @@ public class SplitPaneController {
          */
     }
     @FXML
-    public void compileProgram(MouseEvent event) throws Exception {
+    public void compileProgram(ActionEvent event) throws Exception {
         String text = area.getText();
         String[] lineArray = text.split("\n");
         String className="";
@@ -216,39 +217,10 @@ public class SplitPaneController {
                 break;
             }
         }
-        String progClass = className;
-        // And the arguments to that program are just
-        // arguments 1..n, so separate those out into
-        // their own array
-        String progArgs = className;
-        // Create a CompilingClassLoader
-        CompilingClassLoader ccl = new CompilingClassLoader();
-        // Load the main class through our CCL
-        Class clas = ccl.loadClass( progClass );
 
-        btnCompile.setOnAction(e-> PopupBox.display("Compiler Message", "File compiled successfully."+area.getCurrentPath()));
-
-        /*
-        if(area!= null){
-            CompilingClassLoader ccl = new CompilingClassLoader();
-            String text = area.getText();
-            String[] lineArray = text.split("\n");
-            String className="";
-            for(int i = 0; i < lineArray.length-1;i++) {
-                String[] words = lineArray[i].split("\\s+");
-                for (int j = 0; j < words.length; j++) {
-                    if (words[j].equals("class")) {
-                        className = words[j + 1];
-                        break;
-                    }
-                }
-                if (!className.isEmpty()) {
-                    break;
-                }
-            }
-            ccl.loadClass(className, true);
-            btnCompile.setOnAction(e-> PopupBox.display("Compiler Message", "File compiled successfully."+area.getCurrentPath()));
-        }*/
+        //Call the JavaCompiler Code here
+        CompilingClassLoader hello = new CompilingClassLoader();
+        hello.createTestClass(className);
     }
 
 

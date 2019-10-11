@@ -23,8 +23,8 @@
         <ToolBar layoutY="-4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="39.0" prefWidth="1440.0">
             <items>
                 <Label fx:id="lblTest" />
-                <Button fx:id="btnCompile" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#compileProgram" prefHeight="30.0" prefWidth="100.0" text="Compile" />
-                <Button fx:id="btnRun" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#runProgram" prefHeight="30.0" prefWidth="60.0" text="Run" />
+                <Button fx:id="btnCompile" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#compileProgram" prefHeight="30.0" prefWidth="100.0" text="Compile" />
+                <Button fx:id="btnRun" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#runProgram" prefHeight="30.0" prefWidth="60.0" text="Run" />
                 <Button fx:id="btnWordCount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getWordCount" prefHeight="30.0" prefWidth="120.0" text="Word Count" />
             </items>
         </ToolBar>
