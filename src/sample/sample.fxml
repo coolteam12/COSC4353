@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<?import javafx.scene.control.Label?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SplitPaneController">
     <children>
         <SplitPane fx:id="mainPane" dividerPositions="0.2408026755852843" layoutY="33.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#toggleFileViewer" prefHeight="870.0" prefWidth="1440.0" style="-fx-background-color: #1b1b1b;">
@@ -22,10 +22,10 @@
         </SplitPane>
         <ToolBar layoutY="-4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="39.0" prefWidth="1440.0">
             <items>
-                <Label fx:id="lblTest"/>
+                <Label fx:id="lblTest" />
                 <Button fx:id="btnCompile" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#compileProgram" prefHeight="30.0" prefWidth="100.0" text="Compile" />
                 <Button fx:id="btnRun" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#runProgram" prefHeight="30.0" prefWidth="60.0" text="Run" />
-                <Button fx:id="btnWordCount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#getWordCount" prefHeight="30.0" prefWidth="120.0" text="Word Count" />
+                <Button fx:id="btnWordCount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#getWordCount" prefHeight="30.0" prefWidth="120.0" text="Word Count" />
             </items>
         </ToolBar>
     </children>
