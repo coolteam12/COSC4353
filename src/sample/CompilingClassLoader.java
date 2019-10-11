@@ -12,7 +12,7 @@ checks for nonexistent .class files, or .class files that are older
 than their corresponding source code.
 */
 public class CompilingClassLoader implements JavaCompiler {
-    static void createTestClass(String TESTFILE) throws IOException {
+    static boolean createTestClass(String TESTFILE) throws IOException {
         FileOutputStream fos = new FileOutputStream(TESTFILE + ".java");
         PrintStream ps = new PrintStream(fos);
         ps.println("public class " + TESTFILE + "{");
@@ -26,6 +26,7 @@ public class CompilingClassLoader implements JavaCompiler {
         if (javac.run(null, null, null,  javacOpts) != 0) {
             throw new RuntimeException("compilation of " + TESTFILE + ".java Failed");
         }
+        else{return true;}
     }
 
     @Override
