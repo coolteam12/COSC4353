@@ -1,4 +1,4 @@
-package sample;
+/*package sample;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -92,3 +92,5 @@ public class CompilingClassLoader implements Serializable {
         }
     }
 }
+
+ */

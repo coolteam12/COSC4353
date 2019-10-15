@@ -16,7 +16,9 @@ import javafx.event.ActionEvent;
 import javafx.stage.Popup;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
-
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 
 import org.fxmisc.richtext.CodeArea;
@@ -26,6 +28,7 @@ import org.reactfx.Subscription;
 import javax.tools.ToolProvider;
 import java.io.FileOutputStream;
 import java.lang.reflect.Method;
+import java.nio.Buffer;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -186,13 +189,44 @@ public class SplitPaneController {
             //btnWordCount.setOnAction(e -> PopupBox.display("Word Counter", "Please open up a file to use the Word Counter."));
         }
     }
+
+    //Helps print what comes out of the programs when ran/compiled
+    private static void printLines (String cmd, InputStream ins) throws Exception{
+        String line = null;
+        BufferedReader in = new BufferedReader(new InputStreamReader(ins));
+        while((line = in.readLine()) != null){
+            System.out.println(cmd+ " " + line);
+        }
+    }
+    //Runs the commands needed to compile/run
+    private static void runProcess(String command) throws Exception{
+        Process pro = Runtime.getRuntime().exec(command);
+        printLines("stdout:",pro.getInputStream());
+        printLines("stderr:", pro.getErrorStream());
+        pro.waitFor();
+        System.out.println("exitValue() " + pro.exitValue());
+    }
+
     @FXML
     public void runProgram(ActionEvent event) {
+        if(lblTest.getText() == "Compiled Successfully"){
+            lblTest.setText("Running...");
+            try{
+                String command = ("java -cp " + area.getCurrentPath());
+                runProcess(command);
 
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        else{
+            lblTest.setText("Please successfully compile first.");
+        }
     }
+
     @FXML
     public void compileProgram(ActionEvent event) throws Exception {
-        String text = area.getText();
+        /*String text = area.getText();
         String[] lineArray = text.split("\n");
         String className="";
         for(int i = 0; i < lineArray.length-1;i++) {
@@ -213,6 +247,15 @@ public class SplitPaneController {
         lblTest.setText("Compiled Unsuccessfully");
         hello.compileClass(className, text);
         lblTest.setText("Compiled Successfully");
+
+         */
+        try{
+            String command = ("javac -cp " + area.getCurrentPath());
+            runProcess(command);
+            lblTest.setText("Compiled Successfully");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 }
 
 
