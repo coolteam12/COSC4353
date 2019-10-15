@@ -212,7 +212,16 @@ public class SplitPaneController {
         if(lblTest.getText() == "Compiled Successfully"){
             lblTest.setText("Running...");
             try{
-                String command = ("java -cp " + area.getCurrentPath());
+                String myPath = "\"";
+                for(int i = 0; i < area.getCurrentPath().length(); i++) {
+
+                    if(area.getCurrentPath().charAt(i) == '.' && area.getCurrentPath().charAt(i+1) == 'j' && area.getCurrentPath().charAt(i+2) == 'a'){
+                        break;
+                    }
+                    myPath = myPath + area.getCurrentPath().charAt(i);
+                }
+
+                String command = ("java \""+area.getCurrentPath() + "\"");
                 runProcess(command);
 
             }catch(Exception e){
@@ -226,9 +235,9 @@ public class SplitPaneController {
 
     @FXML
     public void compileProgram(ActionEvent event) throws Exception {
-        /*String text = area.getText();
+        /*
+        String text = area.getText();
         String[] lineArray = text.split("\n");
-        String className="";
         for(int i = 0; i < lineArray.length-1;i++) {
             String[] words = lineArray[i].split("\\s+");
             for (int j = 0; j < words.length; j++) {
@@ -241,16 +250,27 @@ public class SplitPaneController {
                 break;
             }
         }
-
+*/
         //Call the JavaCompiler Code here
+        /*
         CompilingClassLoader hello = new CompilingClassLoader();
         lblTest.setText("Compiled Unsuccessfully");
         hello.compileClass(className, text);
         lblTest.setText("Compiled Successfully");
 
          */
+        String myPath = "\"";
+        for(int i = 0; i < area.getCurrentPath().length(); i++) {
+
+            if(area.getCurrentPath().charAt(i) == 's' && area.getCurrentPath().charAt(i+1) == 'r' && area.getCurrentPath().charAt(i+2) == 'c'){
+                myPath = myPath + "src\"";
+                break;
+            }
+            myPath = myPath + area.getCurrentPath().charAt(i);
+        }
+        String javaFile = "\\*.java";
         try{
-            String command = ("javac -cp " + area.getCurrentPath());
+            String command = ("javac \""+area.getCurrentPath() + "\"");
             runProcess(command);
             lblTest.setText("Compiled Successfully");
         }catch(Exception e){
