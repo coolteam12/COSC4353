@@ -209,6 +209,7 @@ public class SplitPaneController {
 
     @FXML
     public void runProgram(ActionEvent event) {
+        String opSystem = System.getProperty("os.name").toLowerCase();
         if(lblTest.getText() == "Compiled Successfully"){
             lblTest.setText("Running...");
             try{
@@ -222,7 +223,19 @@ public class SplitPaneController {
                 }
 
                 String command = ("java \""+area.getCurrentPath() + "\"");
-                runProcess(command);
+                String maccommand = "";
+                if (opSystem.indexOf("mac")>=0){
+                    for(int i = 0; i < command.length(); i++){
+                        if(command.charAt(i)=='\\'){
+                            maccommand = maccommand + ".";
+                        }else{
+                            maccommand = maccommand + command.charAt(i);
+                        }
+                    }
+                    runProcess(maccommand);
+                }else {
+                    runProcess(command);
+                }
 
             }catch(Exception e){
                 e.printStackTrace();
@@ -235,48 +248,40 @@ public class SplitPaneController {
 
     @FXML
     public void compileProgram(ActionEvent event) throws Exception {
-        /*
-        String text = area.getText();
-        String[] lineArray = text.split("\n");
-        for(int i = 0; i < lineArray.length-1;i++) {
-            String[] words = lineArray[i].split("\\s+");
-            for (int j = 0; j < words.length; j++) {
-                if (words[j].equals("class")) {
-                    className = words[j + 1];
-                    break;
-                }
-            }
-            if (!className.isEmpty()) {
-                break;
-            }
-        }
-*/
-        //Call the JavaCompiler Code here
-        /*
-        CompilingClassLoader hello = new CompilingClassLoader();
-        lblTest.setText("Compiled Unsuccessfully");
-        hello.compileClass(className, text);
-        lblTest.setText("Compiled Successfully");
+        String opSystem = System.getProperty("os.name").toLowerCase();
 
-         */
         String myPath = "\"";
-        for(int i = 0; i < area.getCurrentPath().length(); i++) {
+        for (int i = 0; i < area.getCurrentPath().length(); i++) {
 
-            if(area.getCurrentPath().charAt(i) == 's' && area.getCurrentPath().charAt(i+1) == 'r' && area.getCurrentPath().charAt(i+2) == 'c'){
+            if (area.getCurrentPath().charAt(i) == 's' && area.getCurrentPath().charAt(i + 1) == 'r' && area.getCurrentPath().charAt(i + 2) == 'c') {
                 myPath = myPath + "src\"";
                 break;
             }
             myPath = myPath + area.getCurrentPath().charAt(i);
         }
         String javaFile = "\\*.java";
-        try{
-            String command = ("javac \""+area.getCurrentPath() + "\"");
-            runProcess(command);
+
+        try {
+            String command = ("javac \"" + area.getCurrentPath() + "\"");
+            String maccommand = "";
+            if (opSystem.indexOf("mac")>=0){
+                for(int i = 0; i < command.length(); i++){
+                    if(command.charAt(i)=='\\'){
+                        maccommand = maccommand + ".";
+                    }else{
+                        maccommand = maccommand + command.charAt(i);
+                    }
+                }
+                runProcess(maccommand);
+            }else {
+                runProcess(command);
+            }
             lblTest.setText("Compiled Successfully");
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-}
+
+    }
 
 
 }
