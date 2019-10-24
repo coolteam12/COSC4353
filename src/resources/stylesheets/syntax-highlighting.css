@@ -1,9 +1,17 @@
+.caret {
+    -fx-stroke: white;
+}
+
 #codePane .keyword {
     -fx-fill: #8adeff;
 }
 
 #codePane .operator {
     -fx-fill: #f07278;
+}
+
+#codePane .string {
+    -fx-fill: #ffffff;
 }
 
 .styled-text-area {
@@ -19,3 +27,5 @@
 .lineno {
     -fx-background-color: #1b1b1b;
 }
+
+
