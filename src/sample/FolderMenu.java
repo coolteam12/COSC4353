@@ -7,17 +7,13 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TreeView;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.io.File;
 
 public class FolderMenu extends ContextMenu {
 
     // TODO: pass this through and make sure it's not null
     private Stage stage;
-    private SplitPaneController controller;
+    private AppController controller;
     private FileManager fileManager;
 
     private MenuItem newFile;
@@ -29,7 +25,7 @@ public class FolderMenu extends ContextMenu {
     private MenuItem removeFromViewer;
     private MenuItem delete;
 
-    public FolderMenu(Stage stage, SplitPaneController controller, FileManager fileManager) {
+    public FolderMenu(Stage stage, AppController controller, FileManager fileManager) {
         this.controller = controller;
         this.fileManager = fileManager;
 

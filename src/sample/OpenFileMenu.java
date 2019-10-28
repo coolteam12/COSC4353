@@ -16,9 +16,9 @@ public class OpenFileMenu extends ContextMenu {
 
     // TODO: pass this through and make sure it's not null
     private Stage stage;
-    private SplitPaneController controller;
+    private AppController controller;
 
-    public OpenFileMenu(Stage stage, SplitPaneController controller) {
+    public OpenFileMenu(Stage stage, AppController controller) {
         this.controller = controller;
 
         MenuItem openFile = new MenuItem("Open file");

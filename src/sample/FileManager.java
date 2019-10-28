@@ -3,7 +3,6 @@ package sample;
 
 import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -16,8 +15,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class FileManager {
 
@@ -28,7 +25,7 @@ public class FileManager {
     private FolderMenu folderMenu;
     private FileMenu fileMenu;
 
-    public FileManager(Stage stage, TreeView<FileItem> treeView, SplitPaneController controller) {
+    public FileManager(Stage stage, TreeView<FileItem> treeView, AppController controller) {
         this.treeView = treeView;
 
         this.folderMenu = new FolderMenu(stage, controller, this);
