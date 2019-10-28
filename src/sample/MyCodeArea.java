@@ -19,9 +19,10 @@ class MyCodeArea extends CodeArea {
     // TODO: exclude regex from quotations
     private static final String KEYWORD_PATTERN = "\\b(if|else|for|while)\\b";
     private static final String OPERATOR_PATTERN = "(!=|==|!|-|/|\\+|\\||%%|\\|\\||&&|\\*|\\^|&|\\+=|-=|\\*=|/=)";
+    private static final String STRING_PATTERN = "\"(.*?)\"";
     private static int WORD_COUNT = 0;
     private static final Pattern PATTERN = Pattern.compile(
-            "(?<KEYWORD>" + KEYWORD_PATTERN + ")" + "|(?<OPERATOR>" + OPERATOR_PATTERN + ")"
+            "(?<KEYWORD>" + KEYWORD_PATTERN + ")" + "|(?<OPERATOR>" + OPERATOR_PATTERN + ")" + "|(?<STRING>" + STRING_PATTERN + ")"
     );
 
     public static final String BOILER_PLATE = String.join("\n", new String[] {
@@ -45,6 +46,7 @@ class MyCodeArea extends CodeArea {
 
     MyCodeArea() {
         contents = new ArrayList<String>();
+
     }
 
     public String getCurrentPath(){return currentPath;}
@@ -103,6 +105,9 @@ class MyCodeArea extends CodeArea {
             }
             if (matcher.group("OPERATOR") != null) {
                 styleClass = "operator";
+            }
+            if (matcher.group("STRING") != null) {
+                styleClass = "string";
             }
             spansBuilder.add(Collections.emptyList(), matcher.start() - lastKwEnd);
             spansBuilder.add(Collections.singleton(styleClass), matcher.end() - matcher.start());
