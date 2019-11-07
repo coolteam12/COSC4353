@@ -17,8 +17,7 @@ class CompilerUtils extends ClassLoader{
     //Runs the commands needed to compile/run
     static void runProcess(String command) throws Exception{
         Process pro = Runtime.getRuntime().exec(command);
-        final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
-        
+
 //        Class<?> cls = Class.forName("");
 //        System.out.println("Class Name: " + cls.getName());
 //        System.out.println("Package Name: " + cls.getPackage());
