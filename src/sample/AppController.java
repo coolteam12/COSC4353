@@ -47,6 +47,8 @@ public class AppController {
     @FXML
     private Button btnWordCount;
 
+    private final KeyCombination saveCombination = new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN);
+
     @FXML
     public void initialize() {
         // TODO: Resize lock
@@ -54,14 +56,13 @@ public class AppController {
         fileViewer.minWidthProperty().bind(mainPane.widthProperty().multiply(0.2));
         fileViewer.maxWidthProperty().bind(mainPane.widthProperty().multiply(0.2));
 
-        this.caController = new CodeAreaController(codePane);
+        MyCodeArea area = new MyCodeArea();
+        this.caController = new CodeAreaController(codePane, area);
         this.mbController = new MenuBarController(caController.getArea(), lblTest);
 
         OpenFileMenu openFileMenu = new OpenFileMenu(stage, this);
         this.fileManager = new FileManager(stage, filesList, this);
         this.feController = new FileExplorerController(openFileMenu, fileViewer, mainPane, fileManager);
-
-//        filesList.getStylesheets().add(getClass().getResource("stylesheets/files-list.css").toExternalForm());
     }
 
     @FXML
@@ -76,7 +77,7 @@ public class AppController {
 
     // TODO: tab 4 spaces
     public void openCode(String path) {
-
+        this.caController.openCode(path, this.caController.getArea());
     }
 
     //When the button "Word Count" is pressed, this function is called to do the calculations

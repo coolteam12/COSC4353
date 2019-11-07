@@ -54,8 +54,7 @@ public class FileManager {
                     FileItem item = (FileItem)currentItem.getValue();
 
                     if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2 && item.isFile()) {
-                        String path = item.getPath();
-                        controller.openCode(path);
+                        controller.openCode(item.getPath());
                     } else if (mouseEvent.getButton() == MouseButton.SECONDARY) {
                         if (item.isDirectory()) {
                             folderMenu.show(treeView, mouseEvent.getScreenX(), mouseEvent.getScreenY());

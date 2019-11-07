@@ -49,7 +49,7 @@ class MyCodeArea extends CodeArea {
 
     }
 
-    public String getCurrentPath(){return currentPath;}
+    public String getCurrentPath(){return this.currentPath;}
 
     void openFile(String path) {
         if (currentPath != null && currentPath.equals(path))
@@ -58,7 +58,6 @@ class MyCodeArea extends CodeArea {
         this.changesMade = false;
         clear();
         // TODO: detect for keystrokes, set changesMade to true
-
         try {
             contents.clear();
 
@@ -69,16 +68,12 @@ class MyCodeArea extends CodeArea {
             for (String i : contents){
                 appendText(i);
             }
-//            String toCount = this.getText();
-//            String [] arr = toCount.split(" ");
-//            WORD_COUNT = arr.length;
-//            String wc = Integer.toString(WORD_COUNT);
-//            lblTest.setText(wc);
 
         } catch (IOException e) {
             System.out.println("Could not find file at CodeArea");
             e.printStackTrace();
         }
+
     }
 
     void saveToFile() {

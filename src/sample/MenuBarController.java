@@ -23,7 +23,7 @@ public class MenuBarController {
 
     public void compileProgram(ActionEvent event) throws Exception {
         String opSystem = System.getProperty("os.name").toLowerCase();
-
+        // mac will be "mac os x"
         String myPath = "\"";
         for (int i = 0; i < area.getCurrentPath().length(); i++) {
 
@@ -34,11 +34,11 @@ public class MenuBarController {
             myPath = myPath + area.getCurrentPath().charAt(i);
         }
         String javaFile = "\\*.java";
-
         try {
             String command = ("javac \"" + area.getCurrentPath() + "\"");
             String maccommand = "";
-            if (opSystem.indexOf("mac")>=0){
+            if (opSystem.indexOf("mac os x")>=0){
+                command = ("javac " + area.getCurrentPath());
                 for(int i = 0; i < command.length(); i++){
                     if(command.charAt(i)=='\\'){
                         maccommand = maccommand + ".";
@@ -46,6 +46,7 @@ public class MenuBarController {
                         maccommand = maccommand + command.charAt(i);
                     }
                 }
+                System.out.println("The command we are running is: " + command);
                 CompilerUtils.runProcess(maccommand);
             }else {
                 CompilerUtils.runProcess(command);
@@ -73,7 +74,8 @@ public class MenuBarController {
 
                 String command = ("java \""+area.getCurrentPath() + "\"");
                 String maccommand = "";
-                if (opSystem.indexOf("mac")>=0){
+                if (opSystem.indexOf("mac os x")>=0){
+                    command = ("java " + area.getCurrentPath());
                     for(int i = 0; i < command.length(); i++){
                         if(command.charAt(i)=='\\'){
                             maccommand = maccommand + ".";
@@ -81,6 +83,7 @@ public class MenuBarController {
                             maccommand = maccommand + command.charAt(i);
                         }
                     }
+                    System.out.println("The command we are running is: " + maccommand);
                     CompilerUtils.runProcess(maccommand);
                 }else {
                     CompilerUtils.runProcess(command);
