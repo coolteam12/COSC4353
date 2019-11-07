@@ -33,6 +33,8 @@ public class Main extends Application {
 
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/resources/stylesheets/tool-bar.css").toExternalForm());
+
 
         primaryStage.setScene(scene);
         primaryStage.show();

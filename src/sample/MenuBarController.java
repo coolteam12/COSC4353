@@ -17,7 +17,6 @@ public class MenuBarController {
     public MenuBarController(MyCodeArea area, Label lblTest) {
         this.area = area;
         this.lblTest = lblTest;
-
         this.lblTest.setText("Word Count: 0");
     }
 
@@ -72,10 +71,11 @@ public class MenuBarController {
                     myPath = myPath + area.getCurrentPath().charAt(i);
                 }
 
-                String command = ("java \""+area.getCurrentPath() + "\"");
+//                String command = ("java \""+area.getCurrentPath() + "\"");
+                String command = ("java -verbose:class \"" +area.getCurrentPath() + "\"");
                 String maccommand = "";
                 if (opSystem.indexOf("mac os x")>=0){
-                    command = ("java " + area.getCurrentPath());
+                    command = ("java -verbose:class " + area.getCurrentPath()); // -verbose flag prints classes loaded into the JVM
                     for(int i = 0; i < command.length(); i++){
                         if(command.charAt(i)=='\\'){
                             maccommand = maccommand + ".";

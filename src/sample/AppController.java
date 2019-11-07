@@ -53,8 +53,8 @@ public class AppController {
     public void initialize() {
         // TODO: Resize lock
         // TODO: force cursor to default, not resize
-        fileViewer.minWidthProperty().bind(mainPane.widthProperty().multiply(0.2));
-        fileViewer.maxWidthProperty().bind(mainPane.widthProperty().multiply(0.2));
+//        fileViewer.minWidthProperty().bind(mainPane.widthProperty().multiply(0.2));
+//        fileViewer.maxWidthProperty().bind(mainPane.widthProperty().multiply(0.2));
 
         MyCodeArea area = new MyCodeArea();
         this.caController = new CodeAreaController(codePane, area);
