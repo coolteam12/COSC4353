@@ -19,4 +19,4 @@
         - if you don't have javafx-swt in the directory, click "+" > java and then go to Program Files(x86) > javafx-sdk-12.0.2 > lib and select all the files excluding the src zip file
         - if you don't have the file "javafx-sdk-12.0.2" then download it
 
-![alt text](https://imgur.com/a/EESZF9x)
+![alt text](https://i.imgur.com/pNdmMPH.png)
