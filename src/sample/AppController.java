@@ -1,22 +1,12 @@
 
 package sample;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-
-
-import org.fxmisc.richtext.LineNumberFactory;
-import org.reactfx.Subscription;
-
-import java.time.Duration;
 
 public class AppController {
 
@@ -49,6 +39,10 @@ public class AppController {
 
     private final KeyCombination saveCombination = new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN);
 
+    private OutputAreaController outController;
+    @FXML
+    private TextArea outputArea;
+
     @FXML
     public void initialize() {
         // TODO: Resize lock
@@ -58,7 +52,8 @@ public class AppController {
 
         MyCodeArea area = new MyCodeArea();
         this.caController = new CodeAreaController(codePane, area);
-        this.mbController = new MenuBarController(caController.getArea(), lblTest);
+        this.outController = new OutputAreaController(outputArea);
+        this.mbController = new MenuBarController(caController.getArea(), lblTest, outController);
 
         OpenFileMenu openFileMenu = new OpenFileMenu(stage, this);
         this.fileManager = new FileManager(stage, filesList, this);

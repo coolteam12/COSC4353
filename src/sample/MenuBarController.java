@@ -3,9 +3,6 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,11 +10,13 @@ public class MenuBarController {
 
     private MyCodeArea area;
     private Label lblTest;
+    private OutputAreaController outputArea;
 
-    public MenuBarController(MyCodeArea area, Label lblTest) {
+    public MenuBarController(MyCodeArea area, Label lblTest, OutputAreaController outputArea) {
         this.area = area;
         this.lblTest = lblTest;
         this.lblTest.setText("Word Count: 0");
+        this.outputArea = outputArea;
     }
 
     public void compileProgram(ActionEvent event) throws Exception {
@@ -85,8 +84,11 @@ public class MenuBarController {
                     }
                     System.out.println("The command we are running is: " + maccommand);
                     CompilerUtils.runProcess(maccommand);
+                    CompilerUtils.setLines(maccommand, outputArea);
+
                 }else {
                     CompilerUtils.runProcess(command);
+                    CompilerUtils.setLines(command, outputArea);
                 }
 
             }catch(Exception e){
