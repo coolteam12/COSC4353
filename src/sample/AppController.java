@@ -83,7 +83,7 @@ public class AppController {
 
     @FXML
     public void runProgram(ActionEvent event) {
-        mbController.runProgram(event);
+        mbController.runProgram(event, codePane);
     }
 
     @FXML

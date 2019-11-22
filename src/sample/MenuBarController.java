@@ -2,6 +2,7 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -56,10 +57,11 @@ public class MenuBarController {
 
     }
 
-    public void runProgram(ActionEvent event) {
+    public void runProgram(ActionEvent event, AnchorPane codePane) {
         String opSystem = System.getProperty("os.name").toLowerCase();
         if(lblTest.getText() == "Compiled Successfully"){
             lblTest.setText("Running...");
+
             try{
                 String myPath = "\"";
                 for(int i = 0; i < area.getCurrentPath().length(); i++) {
@@ -73,6 +75,7 @@ public class MenuBarController {
 //                String command = ("java \""+area.getCurrentPath() + "\"");
                 String command = ("java -verbose:class \"" +area.getCurrentPath() + "\"");
                 String maccommand = "";
+
                 if (opSystem.indexOf("mac os x")>=0){
                     command = ("java -verbose:class " + area.getCurrentPath()); // -verbose flag prints classes loaded into the JVM
                     for(int i = 0; i < command.length(); i++){
@@ -83,12 +86,20 @@ public class MenuBarController {
                         }
                     }
                     System.out.println("The command we are running is: " + maccommand);
-                    CompilerUtils.runProcess(maccommand);
+//                    CompilerUtils.runProcess(maccommand);
                     CompilerUtils.setLines(maccommand, outputArea);
+//                    codePane.getChildren().add(outputArea.getOutputArea());
 
                 }else {
-                    CompilerUtils.runProcess(command);
-                    CompilerUtils.setLines(command, outputArea);
+//                    CompilerUtils.runProcess(command);
+
+                    try {
+                        CompilerUtils.setLines(command, outputArea);
+//                        codePane.getChildren().add(outputArea.getOutputArea());
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
             }catch(Exception e){

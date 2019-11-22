@@ -50,10 +50,10 @@ class CompilerUtils extends ClassLoader{
 //        for(Method method : methods)  {
 //            System.out.println(method.getName());
 //        }
-        printLines("stdout:",pro.getInputStream());
-        printLines("stderr:", pro.getErrorStream());
+//        printLines("stdout:",pro.getInputStream());
+//        printLines("stderr:", pro.getErrorStream());
         pro.waitFor();
-        System.out.println("exitValue() " + pro.exitValue());
+//        System.out.println("exitValue() " + pro.exitValue());
     }
 
 }
