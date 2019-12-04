@@ -49,7 +49,6 @@ public class FileManager {
                 folderMenu.hide();
                 fileMenu.hide();
 
-                // TODO: only open text files for now
                 if (node instanceof Text || (node instanceof TreeCell && ((TreeCell) node).getText() != null)) {
                     TreeCell cell;
                     if (node instanceof Text)
@@ -78,7 +77,6 @@ public class FileManager {
         treeView.setShowRoot(false);
     }
 
-    // TODO: select the file itself if it's a file
     public void openExplorer() {
         try {
             FileItem item = (FileItem)currentItem.getValue();
@@ -92,7 +90,6 @@ public class FileManager {
         currentItem.getParent().getChildren().remove(currentItem);
     }
 
-    // TODO: have no separate prompt, new tree item that you can type in
     public void createFile() {
         String fileName = JOptionPane.showInputDialog(null, "Name of file?");
         FileItem item = (FileItem)currentItem.getValue();
@@ -146,7 +143,6 @@ public class FileManager {
         }
     }
 
-    // TODO: hide this option
     public boolean currentItemHasNoParent() {
         if (currentItem == null)
             return true;

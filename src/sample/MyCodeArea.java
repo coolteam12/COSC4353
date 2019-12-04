@@ -16,7 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class MyCodeArea extends CodeArea {
-    // TODO: exclude regex from quotations
+
     private static final String KEYWORD_PATTERN = "\\b(if|else|for|while)\\b";
     private static final String OPERATOR_PATTERN = "(!=|==|!|-|/|\\+|\\||%%|\\|\\||&&|\\*|\\^|&|\\+=|-=|\\*=|/=)";
     private static final String STRING_PATTERN = "\"(.*?)\"";
@@ -57,7 +57,7 @@ class MyCodeArea extends CodeArea {
         this.currentPath = path;
         this.changesMade = false;
         clear();
-        // TODO: detect for keystrokes, set changesMade to true
+
         try {
             contents.clear();
 

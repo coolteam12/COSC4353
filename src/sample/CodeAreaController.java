@@ -26,7 +26,6 @@ public class CodeAreaController {
         codePane.setFocusTraversable(true);
     }
 
-    // TODO: tab 4 spaces
     public void openCode(String path, MyCodeArea area) {
         area.replaceText(0, 0, MyCodeArea.BOILER_PLATE);
         area.setParagraphGraphicFactory(LineNumberFactory.get(area));
@@ -37,10 +36,7 @@ public class CodeAreaController {
                 .multiPlainChanges()
                 .successionEnds(Duration.ofMillis(100))
                 .subscribe(ignore -> area.setStyleSpans(0, area.computeHighlighting(area.getText())));
-        // TODO: add support for other extensions
-//            if(path.endsWith(".java")) {
-//                area.replaceText(0, 0, MyCodeArea.BOILER_PLATE);
-//            }
+
         codePane.getStylesheets().add(getClass().getResource("/resources/stylesheets/syntax-highlighting.css").toExternalForm());
         codePane.getChildren().add(area);
 

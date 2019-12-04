@@ -10,8 +10,6 @@ import javafx.event.ActionEvent;
 
 public class AppController {
 
-    //TODO: when the pane is hidden, expand the size of the textarea to full
-    // TODO: find a way to pass stage through
     private Stage stage;
 
     private FileExplorerController feController;
@@ -45,8 +43,6 @@ public class AppController {
 
     @FXML
     public void initialize() {
-        // TODO: Resize lock
-        // TODO: force cursor to default, not resize
 //        fileViewer.minWidthProperty().bind(mainPane.widthProperty().multiply(0.2));
 //        fileViewer.maxWidthProperty().bind(mainPane.widthProperty().multiply(0.2));
 
@@ -70,7 +66,6 @@ public class AppController {
         feController.toggleFileViewer(event);
     }
 
-    // TODO: tab 4 spaces
     public void openCode(String path) {
         this.caController.openCode(path, this.caController.getArea());
     }

@@ -38,7 +38,6 @@ public class FileExplorerController {
         if (toggleCombination.match(event)) {
             toggleFileViewer = !toggleFileViewer;
 
-            // TODO: hide fileViewer
             if (!toggleFileViewer) {
                 mainPane.getItems().remove(fileViewer);
             } else {

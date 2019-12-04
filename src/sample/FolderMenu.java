@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 
 public class FolderMenu extends ContextMenu {
 
-    // TODO: pass this through and make sure it's not null
     private Stage stage;
     private AppController controller;
     private FileManager fileManager;
@@ -64,7 +63,6 @@ public class FolderMenu extends ContextMenu {
 
         this.separator2 = new SeparatorMenuItem();
 
-        // TODO: change to only if parent is root!!!
         this.removeFromViewer = new MenuItem("Remove from viewer");
         removeFromViewer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -93,7 +91,6 @@ public class FolderMenu extends ContextMenu {
                 }
             });
 
-            // TODO: make this not constant
             getItems().add(6, removeFromViewer);
         } else if (!fileManager.currentItemHasNoParent()) {
             getItems().remove(removeFromViewer);

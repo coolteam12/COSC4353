@@ -14,7 +14,6 @@ import java.io.File;
 
 public class OpenFileMenu extends ContextMenu {
 
-    // TODO: pass this through and make sure it's not null
     private Stage stage;
     private AppController controller;
 
@@ -27,7 +26,6 @@ public class OpenFileMenu extends ContextMenu {
             public void handle(ActionEvent actionEvent) {
                 FileChooser fileChooser = new FileChooser();
 
-                // TODO: change from null to actual stage
                 File selectedFile = fileChooser.showOpenDialog(null);
                 if (selectedFile != null) {
                     FileItem fileItem = new FileItem(selectedFile.getPath());
@@ -52,7 +50,6 @@ public class OpenFileMenu extends ContextMenu {
 
         SeparatorMenuItem separator = new SeparatorMenuItem();
 
-        // TODO: implement this
         MenuItem refresh = new MenuItem("Refresh all");
         refresh.setOnAction(new EventHandler<ActionEvent>() {
             @Override

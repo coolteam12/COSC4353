@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 
 public class FileMenu extends ContextMenu {
 
-    // TODO: pass this through and make sure it's not null
     private Stage stage;
     private AppController controller;
     private FileManager fileManager;
@@ -147,7 +146,6 @@ public class FileMenu extends ContextMenu {
                 }
             });
 
-            // TODO: make this not constant
             getItems().add(3, removeFromViewer);
         } else if (!fileManager.currentItemHasNoParent()) {
             getItems().remove(removeFromViewer);
