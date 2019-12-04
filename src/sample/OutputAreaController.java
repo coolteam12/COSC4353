@@ -21,12 +21,12 @@ public class OutputAreaController {
 
         for (int i = 0; i < lines.size(); i++) {
             outputArea.appendText(lines.get(i) + "\n");
-            System.out.println(lines.get(i));
+//            System.out.println(lines.get(i));
         }
 
         outputArea.toFront();
         outputArea.setViewOrder(Double.MIN_VALUE);
-        System.out.println("SET VIEW ORDER");
+//        System.out.println("SET VIEW ORDER");
     }
 
     public TextArea getOutputArea() {

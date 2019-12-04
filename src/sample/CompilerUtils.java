@@ -15,7 +15,7 @@ class CompilerUtils extends ClassLoader{
         String line = null;
         BufferedReader in = new BufferedReader(new InputStreamReader(ins));
         while((line = in.readLine()) != null){
-            System.out.println(cmd+ " " + line);
+//            System.out.println(cmd+ " " + line);
         }
     }
 
