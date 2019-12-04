@@ -8,8 +8,10 @@ import java.util.ArrayList;
 
 class CompilerUtils extends ClassLoader{
 
+    public static final CompilerUtils C_UTILS = new CompilerUtils();
+
     //Helps print what comes out of the programs when ran/compiled
-    private static void printLines(String cmd, InputStream ins) throws Exception{
+    private void printLines(String cmd, InputStream ins) throws Exception{
         String line = null;
         BufferedReader in = new BufferedReader(new InputStreamReader(ins));
         while((line = in.readLine()) != null){
@@ -17,7 +19,7 @@ class CompilerUtils extends ClassLoader{
         }
     }
 
-    public static void setLines(String command, OutputAreaController outArea) throws Exception {
+    public void setLines(String command, OutputAreaController outArea) throws Exception {
         Process pro = Runtime.getRuntime().exec(command);
 
         ArrayList<String> lines = new ArrayList<String>();
@@ -40,7 +42,7 @@ class CompilerUtils extends ClassLoader{
     }
 
     //Runs the commands needed to compile/run
-    static void runProcess(String command) throws Exception{
+    public void runProcess(String command) throws Exception{
         Process pro = Runtime.getRuntime().exec(command);
 
 //        Class<?> cls = Class.forName("");

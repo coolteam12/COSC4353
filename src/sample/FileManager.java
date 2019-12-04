@@ -29,7 +29,14 @@ public class FileManager {
         this.treeView = treeView;
 
         this.folderMenu = new FolderMenu(stage, controller, this);
-        this.fileMenu = new FileMenu(stage, controller, this);
+        this.fileMenu = new FileMenu.Builder()
+                .withRenameOption()
+                .withSeparator()
+                .withShowInExplorer(this)
+                .withRemoveFromViewer(this)
+                .withDelete()
+                .build(stage, controller, this);
+//        this.fileMenu = new FileMenu(stage, controller, this);
 //        treeView.getStylesheets().add(getClass().getResource("/resources/file-manager.css").toExternalForm());
 
         treeView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

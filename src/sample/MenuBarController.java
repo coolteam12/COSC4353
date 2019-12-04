@@ -46,9 +46,11 @@ public class MenuBarController {
                     }
                 }
                 System.out.println("The command we are running is: " + command);
-                CompilerUtils.runProcess(maccommand);
+                CompilerUtils.C_UTILS.runProcess(maccommand);
+//                CompilerUtils.runProcess(maccommand);
             }else {
-                CompilerUtils.runProcess(command);
+                CompilerUtils.C_UTILS.runProcess(command);
+//                CompilerUtils.runProcess(command);
             }
             lblTest.setText("Compiled Successfully");
         } catch (Exception e) {
@@ -87,14 +89,16 @@ public class MenuBarController {
                     }
                     System.out.println("The command we are running is: " + maccommand);
 //                    CompilerUtils.runProcess(maccommand);
-                    CompilerUtils.setLines(maccommand, outputArea);
+                    CompilerUtils.C_UTILS.setLines(maccommand, outputArea);
+//                    CompilerUtils.setLines(maccommand, outputArea);
 //                    codePane.getChildren().add(outputArea.getOutputArea());
 
                 }else {
 //                    CompilerUtils.runProcess(command);
 
                     try {
-                        CompilerUtils.setLines(command, outputArea);
+                        CompilerUtils.C_UTILS.setLines(command, outputArea);
+//                        CompilerUtils.setLines(command, outputArea);
 //                        codePane.getChildren().add(outputArea.getOutputArea());
 
                     } catch (Exception e) {
